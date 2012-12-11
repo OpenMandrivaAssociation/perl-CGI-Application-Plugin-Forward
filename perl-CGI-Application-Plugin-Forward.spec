@@ -1,21 +1,21 @@
 %define upstream_name    CGI-Application-Plugin-Forward
 %define upstream_version 1.06
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Pass control from one run mode to another
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Pass control from one run mode to another
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(CGI::Application)
-BuildRequires: perl(Test::More)
-BuildRequires: perl(Module::Build::Compat)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(CGI::Application)
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(Module::Build::Compat)
+BuildArch:	noarch
 
 %description
 The forward method passes control to another run mode and returns its
@@ -35,21 +35,35 @@ from 'start' while updating the value of 'current_run_mode':
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc README Changes
 %{_mandir}/man3/*
-%perl_vendorlib/CGI
+%{perl_vendorlib}/CGI
+
+
+%changelog
+* Sat May 28 2011 Funda Wang <fwang@mandriva.org> 1.60.0-2mdv2011.0
++ Revision: 680681
+- mass rebuild
+
+* Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 1.60.0-1mdv2011.0
++ Revision: 405775
+- rebuild using %%perl_convert_version
+
+* Wed Nov 26 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.06-1mdv2009.1
++ Revision: 307042
+- import perl-CGI-Application-Plugin-Forward
+
+
+* Wed Nov 26 2008 cpan2dist 1.06-1mdv
+- initial mdv release, generated with cpan2dist
+
