@@ -2,14 +2,14 @@
 %define upstream_version 1.06
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	%{upstream_version}
+Release:	6
 
 Summary:	Pass control from one run mode to another
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://metacpan.org/dist/CGI-Application-Plugin-Forward
+Source0:	https://cpan.metacpan.org/authors/id/M/MG/MGRAHAM/CGI-Application-Plugin-Forward-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
