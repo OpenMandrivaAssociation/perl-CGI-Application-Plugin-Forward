@@ -1,15 +1,13 @@
 %define upstream_name    CGI-Application-Plugin-Forward
-%define upstream_version 1.06
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	6
+Version:	1.06
+Release:	7
 
 Summary:	Pass control from one run mode to another
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/CGI-Application-Plugin-Forward
-Source0:	https://cpan.metacpan.org/authors/id/M/MG/MGRAHAM/CGI-Application-Plugin-Forward-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/M/MG/MGRAHAM/CGI-Application-Plugin-Forward-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -33,7 +31,7 @@ For example, here's how to pass control to a run mode named 'other_action'
 from 'start' while updating the value of 'current_run_mode':
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -58,9 +56,7 @@ make test
 
 * Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 1.60.0-1mdv2011.0
 + Revision: 405775
-- rebuild using %%perl_convert_version
-
-* Wed Nov 26 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.06-1mdv2009.1
+- rebuild using %1.06 Wed Nov 26 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.06-1mdv2009.1
 + Revision: 307042
 - import perl-CGI-Application-Plugin-Forward
 
